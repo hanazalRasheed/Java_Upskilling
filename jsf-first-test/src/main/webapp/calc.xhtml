@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Number 1" />
+			<h:inputText value="#{calc.n1}"/>
+			<h:outputLabel value="Number 2" />
+			<h:inputText value="#{calc.n2}"/>
+			<h:commandButton value="Add" action="#{calc.add()}"/>
+			<h:commandButton value="Sub" action="#{calc.sub()}"/>
+
+			<h:outputText value="Result: #{calc.result}" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
