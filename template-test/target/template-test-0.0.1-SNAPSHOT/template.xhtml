@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<div id="header">
+		<h1>Welcome to WaemSoft</h1>
+	</div>
+	<h:panelGroup rendered="#{mbSecurity.username != null}">
+		<div id="welcome">
+			<h2>
+				<h:outputText value="Hello, #{mbSecurity.username}!" />
+			</h2>
+		</div>
+		<div id="top-menu">
+			<h:form>
+				<ul>
+					<li><a href="home.xhtml">Home</a></li>
+					<li><a href="about.xhtml">About</a></li>
+					<li><a href="services.xhtml">Services</a></li>
+					<li><a href="products.xhtml">Products</a></li>
+					<li><a href="contact-us.xhtml">Contact Us</a></li>
+					<li><h:commandLink value="Logout" action="#{mbSecurity.logout()}"/></li>
+				</ul>
+			</h:form>
+		</div>
+		<div id="main-contents">
+			<ui:insert name="mainContents">
+			Main contents goes here
+		</ui:insert>
+		</div>
+	</h:panelGroup>
+
+	<h:form rendered="#{mbSecurity.username==null}">
+		<h:messages />
+		<h:panelGrid columns="2">
+			<h:outputLabel>Username</h:outputLabel>
+			<h:inputText value="#{mbSecurity.username}" required="true"
+				requiredMessage="Missing Username">
+			</h:inputText>
+
+			<h:outputLabel>Password</h:outputLabel>
+			<h:inputSecret value="#{mbSecurity.password}" required="true"
+				requiredMessage="Missing password" />
+
+			<f:facet name="footer">
+				<h:commandButton value="Login" action="#{mbSecurity.login()}" />
+			</f:facet>
+		</h:panelGrid>
+
+	</h:form>
+
+	<div id="footer">
+		<h3>Copyrights reserved to WeamSoft</h3>
+	</div>
+</h:body>
+</html>
