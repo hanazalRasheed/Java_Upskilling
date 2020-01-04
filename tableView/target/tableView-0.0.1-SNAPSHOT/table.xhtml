@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/core">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Employee Table</title>
+
+</head>
+<body>
+	<h:form>
+		<h2>Employee Table</h2>
+		<h:dataTable value="#{mbEmp.employees}" var="employee" border="2"
+			cellspacing="1" cellpadding="1">
+			<h:column headerText="employee Id">
+				<c:facet name="header">ID</c:facet>
+      #{employee.empId}
+    </h:column>
+
+			<h:column headerText="employee Name">
+				<c:facet name="header">Name</c:facet>
+         #{employee.empName}
+    </h:column>
+
+			<h:column headerText="employee salary">
+				<c:facet name="header">Salary</c:facet>
+        #{employee.empSalary}
+    </h:column>
+
+
+			<h:column headerText="Action">
+				<c:facet name="header">Action</c:facet>
+				<h:commandLink value="Delete  " action="#{mbEmp.delete(employee)}" />
+				<h:commandLink value="  Update" action="#{mbEmp.edit(employee)}" />
+			</h:column>
+		
+
+		</h:dataTable>
+		<h:commandButton value="Add" action="#{mbEmp.addEmployee()}" />
+	</h:form>
+</body>
+</html>

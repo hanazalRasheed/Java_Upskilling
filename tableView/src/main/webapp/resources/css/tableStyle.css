@@ -1,0 +1,44 @@
+.employeeTable {   
+   border-collapse:collapse;
+   border:1px solid #000000;
+   column-width: 100px;
+   border-spacing: 5px 100px;
+   width:90%;
+   margin:20px;
+   font-family: 'Vollkorn', serif;
+   
+ 
+}
+
+.tableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #74abf5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.row {
+   text-align:center;
+   background:#FFFFFFF;
+    height:20%;
+    padding: 8px;
+  border-bottom: 2px solid #000000;
+   
+}
+
+.buttons {
+    margin-top: 10px;
+    margin-left:85%;
+    padding: 5px 5px 5px 5px; 
+    border: 1px solid #aaa;
+    width: 50px;
+    
+}
+
+tr:hover {background-color:RGBA(116, 171, 245,0.5);
+}
+
+.buttons:hover {
+  background-color: #0000a0; 
+  color: white;
+}

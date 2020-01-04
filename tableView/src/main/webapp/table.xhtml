@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="ISO-8859-1" />
+	<title>Employee Table</title>
+	<h:outputStylesheet library="css" name="tableStyle.css" />
+</h:head>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family='Sawarabi Mincho', sans-serif" />
+<body>
+	<h:form>
+		<h2>Employee Table</h2>
+		<p:dataTable value="#{mbEmployee.employees}" var="employee"
+			rowIndexVar="index">
+			<p:column headerText="employee Number">
+				<h:outputText value="#{index+1}" />
+			</p:column>
+			<p:column headerText="employee Id" sortBy="#{employee.empId}"
+				filterBy="#{employee.empId}">
+				<h:outputText value="#{employee.empId}" />
+			</p:column>
+
+			<p:column headerText="employee Name" sortBy="#{employee.empName}"
+				filterBy="#{employee.empName}">
+				<h:outputText value=" #{employee.empName}" />
+			</p:column>
+
+			<p:column headerText="employee salary" sortBy="#{employee.empSalary}"
+				filterBy="#{emplyee.empSalary}">
+				<h:outputText value="#{employee.empSalary}" />
+			</p:column>
+
+			<p:column headerText="employee department" sortBy="#{employee.department.deptName}" filterBy="#{employee.department.deptName}">
+				<h:outputText value="#{employee.department.deptName}" />
+			</p:column>
+
+			<p:column headerText="Action">
+				<p:commandLink action="#{mbEmployee.deleteEmployee(index)}"
+					ajax="false">
+					<h:graphicImage value="/resources/images/delete.png" height="20px"
+						width="20px" alt="Image not found" />
+				</p:commandLink>
+				<p:commandLink action="#{mbEmployee.edit(index)}"
+					oncomplete="PF('dlgInf').show()" update="dlgInf">
+					<h:graphicImage value="/resources/images/edit.png" height="20px"
+						width="20px" alt="Image not found" />
+				</p:commandLink>
+			</p:column>
+
+
+		</p:dataTable>
+
+		<a href="#" onclick="PF('dlgInf').show()"> Add </a>
+	</h:form>
+
+	<p:dialog widgetVar="dlgInf" header="Employee" width="500" height="400"
+		id="dlgInf">
+		<h:form>
+			<h:panelGrid columns="2">
+				<p:outputLabel> ID</p:outputLabel>
+				<p:inputText value="#{mbEmployee.current.empId}">
+				</p:inputText>
+				<p:outputLabel> Name</p:outputLabel>
+				<p:inputText value="#{mbEmployee.current.empName}">
+				</p:inputText>
+				<p:outputLabel> Salary</p:outputLabel>
+				<p:inputText value="#{mbEmployee.current.empSalary}">
+				</p:inputText>
+				<p:outputLabel> Department</p:outputLabel>
+				<p:selectOneMenu value="#{mbEmployee.current.department}" converter="omnifaces.SelectItemsIndexConverter">
+					<f:selectItem itemValue="#{null}" itemLabel="-"/>
+					<f:selectItems value="#{mbDepartment.departments}" var="dep"
+					itemLabel="#{dep.deptName}" itemValue="#{dep}"/>
+				
+				</p:selectOneMenu>
+			</h:panelGrid>
+			<h:commandButton rendered="#{mbEmployee.current.empId==0}" value="save" action="#{mbEmployee.addEmployee()}" />
+			<h:commandButton rendered="#{mbEmployee.current.empId>0}" value="save" action="#{mbEmployee.update()}" />
+		
+		</h:form>
+
+	</p:dialog>
+</body>
+</html>

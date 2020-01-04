@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+<h:outputStylesheet library="css" name="addEmployeeStyle.css"  />
+<meta charset="ISO-8859-1"/>
+<title>Add new Employee</title>
+</h:head>
+
+<body>
+
+<h:form >
+
+<div class="addEmployeeForm">
+<h3>Add New Employee</h3>
+<h:panelGrid columns="2">
+<h:outputLabel> Employee ID</h:outputLabel>
+<h:inputText value="#{mbEmp.empId}"> </h:inputText>
+<h:outputLabel> Employee Name</h:outputLabel>
+<h:inputText value="#{mbEmp.empName}"> </h:inputText>
+<h:outputLabel> Employee Salary</h:outputLabel>
+<h:inputText value="#{mbEmp.empSalary}"> </h:inputText>
+
+</h:panelGrid>
+</div>
+<div class="alignItem">
+<h:commandButton class="addButton" value="Save" action="#{mbEmp.saveAdd()}"> </h:commandButton>
+</div>
+</h:form>
+</body>
+</html>

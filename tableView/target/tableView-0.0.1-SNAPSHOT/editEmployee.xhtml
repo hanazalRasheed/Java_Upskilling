@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+</head>
+<body>
+<h2>Edit Employee</h2>
+<h:form >
+<h:panelGrid columns="2">
+<h:outputLabel> Employee ID</h:outputLabel>
+<h:inputText value="#{mbEmp.empId}"> </h:inputText>
+<h:outputLabel> Employee Name</h:outputLabel>
+<h:inputText value="#{mbEmp.empName}"> </h:inputText>
+<h:outputLabel> Employee Salary</h:outputLabel>
+<h:inputText value="#{mbEmp.empSalary}"> </h:inputText>
+
+</h:panelGrid>
+<h:commandButton value="Save" action="#{mbEmp.saveEdit()}"> </h:commandButton>
+</h:form>
+</body>
+</html>
